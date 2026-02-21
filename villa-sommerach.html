@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Villa Sommerach – Linda &amp; Timo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════ NAVIGATION ═══════════ -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-brand">Hochzeit Linda &amp; Timo</a>
+    <button class="nav-toggle" aria-label="Menü öffnen" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Startseite</a>
+      <a href="standesamt.html">Standesamt Würzburg</a>
+      <a href="villa-sommerach.html" class="active">Villa Sommerach</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <header class="subpage-hero">
+    <h1>Villa Sommerach</h1>
+    <div class="leaf-divider"><span>🎉</span></div>
+    <p>Alle wichtigen Informationen rund um unsere Feier-Location in Sommerach</p>
+  </header>
+
+  <!-- ═══════════ CONTENT ═══════════ -->
+  <div class="info-block">
+    <h2>📍 Ort &amp; Adresse</h2>
+    <div class="highlight-box">
+      <h3>Villa Sommerach</h3>
+      <p>Nordheimer Str. 13</p>
+      <p>97334 Sommerach</p>
+    </div>
+    <p>
+      Die Hochzeitsfeier findet in der wunderschönen Villa Sommerach statt —
+      eingebettet in die malerische Weinlandschaft am Main.
+    </p>
+  </div>
+
+  <div class="info-block">
+    <h2>🕐 Zeitplan</h2>
+    <div class="highlight-box">
+      <h3>Donnerstag, 18. Juni 2026</h3>
+      <p><strong>12:15 Uhr</strong> — Begrüßung und Fingerfood</p>
+      <p><strong>14:30 Uhr</strong> — Kaffee und Kuchen</p>
+      <p><strong>17:30 Uhr</strong> — Abendessen und anschließende Party</p>
+    </div>
+  </div>
+
+  <div class="info-block">
+    <h2>📋 Gut zu wissen</h2>
+    <ul>
+      <li>Bitte folgt den Schildern „Hochzeit Linda &amp; Timo" auf dem Gelände</li>
+      <li>Aus Rücksicht auf die Nachbarn schließt die Villa Sommerach um 01:00 Uhr ihre Pforten.</li>
+    </ul>
+  </div>
+
+  <div class="info-block">
+    <h2>🅿️ Parken an der Villa Sommerach</h2>
+    <p>
+      Die Parkplätze direkt an der Villa Sommerach sind den Hotelgästen vorbehalten!
+    </p>
+    <p>
+      Info Parkplätze: <a href="https://www.sommerach.de/besucher-info" target="_blank" rel="noopener noreferrer">Hier klicken</a>
+    </p>
+  </div>
+
+  <section style="padding-bottom: 60px;">
+    <a href="standesamt.html" class="btn">← Standesamt Würzburg</a>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <p class="names">Linda &amp; Timo</p>
+    <p>18. Juni 2026 · Mit Liebe &amp; Dankbarkeit</p>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('.site-nav').classList.toggle('scrolled', window.scrollY > 40);
+    });
+  </script>
+</body>
+</html>

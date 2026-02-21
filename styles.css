@@ -1,0 +1,356 @@
+/* ══════════════════════════════════════════
+   Shared Styles – Linda & Timo Hochzeit
+   ──── Greenery Style with Gold Accents ────
+   ══════════════════════════════════════════ */
+
+/* ── Reset ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* Gold accents */
+  --gold:        #c9a84c;
+  --gold-light:  #e4cc7a;
+  --gold-dark:   #a07c2a;
+
+  /* Greenery palette — lush botanical tones */
+  --sage:        #a3b18a;       /* soft sage green          */
+  --sage-light:  #c8d5b9;       /* pale sage                */
+  --eucalyptus:  #7a9e7e;       /* mid eucalyptus           */
+  --fern:        #5f8d5a;       /* rich fern                */
+  --olive:       #4a6741;       /* classic olive            */
+  --forest:      #2e4228;       /* deep forest              */
+
+  /* Neutrals */
+  --cream:       #f7f5ef;       /* warm ivory               */
+  --linen:       #eceae1;       /* linen background accent  */
+  --white:       #ffffff;
+  --text:        #3a3a3a;
+  --text-soft:   #5c5c5c;
+
+  /* Legacy aliases (keep old references working) */
+  --green:       var(--olive);
+  --green-light: var(--eucalyptus);
+  --green-dark:  var(--forest);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── Navigation ── */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background: rgba(247, 245, 239, .88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(163,177,138,.25);
+  transition: box-shadow .3s, background .3s;
+}
+.site-nav.scrolled {
+  background: rgba(247, 245, 239, .96);
+  box-shadow: 0 2px 20px rgba(46,66,40,.08);
+}
+.site-nav .nav-brand {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--gold);
+  text-decoration: none;
+  margin-right: 24px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.site-nav a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: .8rem;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--forest);
+  text-decoration: none;
+  padding: 6px 16px;
+  border-radius: 20px;
+  transition: background .3s, color .3s;
+}
+.site-nav a:hover {
+  background: rgba(163,177,138,.25);
+  color: var(--forest);
+}
+.site-nav a.active {
+  background: var(--forest);
+  color: var(--cream);
+}
+
+/* hamburger toggle (mobile) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--forest);
+  border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 600px) {
+  .site-nav { justify-content: space-between; }
+  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(247,245,239,.97);
+    backdrop-filter: blur(14px);
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(163,177,138,.2);
+    box-shadow: 0 4px 20px rgba(46,66,40,.06);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 10px 24px; width: 100%; text-align: center; }
+}
+
+/* ── Decorative leaf divider ── */
+.leaf-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 32px auto;
+}
+.leaf-divider span {
+  font-size: 1.4rem;
+  color: var(--eucalyptus);
+}
+.leaf-divider::before,
+.leaf-divider::after {
+  content: '';
+  width: 70px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+}
+
+/* ── Section helpers ── */
+section {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  text-align: center;
+}
+section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 2.2rem;
+  color: var(--forest);
+  margin-bottom: 6px;
+}
+
+/* ── Detail Cards (reused on subpages) ── */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+  margin-top: 36px;
+}
+.detail-card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid rgba(163,177,138,.3);
+  border-radius: 16px;
+  padding: 40px 24px 36px;
+  box-shadow: 0 4px 24px rgba(46,66,40,.05);
+  transition: transform .3s, box-shadow .3s;
+  overflow: hidden;
+}
+.detail-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sage), var(--gold-light), var(--sage));
+}
+.detail-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(46,66,40,.10);
+}
+.detail-card .icon {
+  font-size: 2rem;
+  margin-bottom: 14px;
+}
+.detail-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  color: var(--fern);
+  margin-bottom: 8px;
+}
+.detail-card p {
+  font-size: .9rem;
+  color: var(--text-soft);
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  padding: 14px 42px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: .88rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: linear-gradient(135deg, var(--fern), var(--forest));
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(46,66,40,.15);
+}
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(46,66,40,.20);
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 48px 20px;
+  font-size: .8rem;
+  color: var(--sage);
+  background:
+    linear-gradient(180deg, var(--cream) 0%, var(--linen) 100%);
+  border-top: 1px solid rgba(163,177,138,.2);
+}
+footer .names {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+/* ── Subpage Hero (smaller) ── */
+.subpage-hero {
+  padding: 150px 24px 70px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 10% 90%, rgba(163,177,138,.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 10%, rgba(200,213,185,.15) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, rgba(201,168,76,.06) 0%, transparent 60%),
+    var(--cream);
+}
+.subpage-hero h1 {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  color: var(--gold);
+}
+.subpage-hero p {
+  margin-top: 14px;
+  font-size: .95rem;
+  color: var(--text-soft);
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Info blocks (subpage content) ── */
+.info-block {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  text-align: left;
+}
+.info-block + .info-block {
+  padding-top: 0;
+}
+.info-block h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.7rem;
+  color: var(--forest);
+  margin-bottom: 16px;
+  text-align: left;
+}
+.info-block p,
+.info-block li {
+  font-size: .93rem;
+  color: var(--text-soft);
+  margin-bottom: 12px;
+}
+.info-block ul {
+  list-style: none;
+  padding: 0;
+}
+.info-block ul li::before {
+  content: '🌿 ';
+}
+.info-block .highlight-box {
+  background: var(--white);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 12px 12px 0;
+  padding: 22px 26px;
+  margin: 24px 0;
+  box-shadow: 0 2px 16px rgba(46,66,40,.05);
+}
+.info-block .highlight-box h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--fern);
+  margin-bottom: 8px;
+}
+.info-block .highlight-box p {
+  margin-bottom: 4px;
+}
+
+/* ── Map placeholder ── */
+.map-container {
+  margin: 32px auto;
+  max-width: 700px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(163,177,138,.3);
+  box-shadow: 0 4px 24px rgba(46,66,40,.05);
+}
+.map-container iframe {
+  width: 100%;
+  height: 350px;
+  border: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .subpage-hero { padding: 120px 20px 40px; }
+  .info-block { padding: 40px 20px; }
+}

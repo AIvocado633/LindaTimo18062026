@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Standesamt Würzburg – Linda &amp; Timo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════ NAVIGATION ═══════════ -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-brand">Hochzeit Linda &amp; Timo</a>
+    <button class="nav-toggle" aria-label="Menü öffnen" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Startseite</a>
+      <a href="standesamt.html" class="active">Standesamt Würzburg</a>
+      <a href="villa-sommerach.html">Villa Sommerach</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <header class="subpage-hero">
+    <h1>Standesamt Würzburg</h1>
+    <div class="leaf-divider"><span>🌿</span></div>
+    <p>Alle wichtigen Informationen rund um unsere standesamtliche Trauung in Würzburg</p>
+  </header>
+
+  <!-- ═══════════ CONTENT ═══════════ -->
+  <div class="info-block">
+    <h2>📍 Ort &amp; Adresse</h2>
+    <div class="highlight-box">
+      <h3>Standesamt Würzburg</h3>
+      <p>Wenzelsaal (1. Stock)</p>
+      <p>Beim Grafeneckart 1, 97070 Würzburg</p>
+    </div>
+    <p>
+      Die standesamtliche Trauung findet im Wenzelsaal im 1. Stock des Grafeneckart statt.
+      Es ist Platz für alle Gäste vorhanden, damit ihr die Trauung live miterleben könnt.
+    </p>
+    <p>
+      Weg zum Trausaal: <a href="https://www.wuerzburg.de/media/www.wuerzburg.de/org/med_4512/450239_wegbeschreibung_wenzelsaal.pdf" target="_blank" rel="noopener noreferrer">Hier klicken</a>
+    </p>
+  </div>
+          
+
+  <div class="info-block">
+    <h2>🕐 Zeitplan</h2>
+    <div class="highlight-box">
+      <h3>Donnerstag, 18. Juni 2026</h3>
+      <p><strong>9:45 Uhr</strong> — Einfinden vor dem Standesamt</p>
+      <p><strong>10:00 Uhr</strong> — Trauung mit anschließendem Sektempfang</p>
+    </div>
+  </div>
+
+  <div class="info-block">
+    <h2>📋 Gut zu wissen</h2>
+    <ul>
+      <li>Bitte seid pünktlich — findet euch um 9:45 Uhr vor dem Standesamt ein</li>
+      <li>Infos der Stadt: <a href="https://www.wuerzburg.de/media/www.wuerzburg.de/org/med_516572/580290_infoblatt_wenzelsaal_ohne_einschraenkungen_mit_qr-code.pdf" target="_blank" rel="noopener noreferrer">Hier klicken</a></li>
+    </ul>
+  </div>
+
+  <div class="info-block">
+    <h2>🅿️ Parken am Standesamt</h2>
+    <ul>
+      <li><strong>Marktgarage</strong>, Karmelitenstraße, 97070 Würzburg, <a href="https://www.wvv.de/parken-b2c/parkplaetze/?city=W%C3%BCrzburg&center=2679" target="_blank" rel="noopener noreferrer">Hier klicken</a></li>
+      <li><strong>Kranengarage</strong>, Kranenkai 3, 97070 Würzburg, <a href="https://www.wvv.de/parken-b2c/parkplaetze/?city=W%C3%BCrzburg&center=3754" target="_blank" rel="noopener noreferrer">Hier klicken</a></li>
+      <li><strong>Parkplatz Friedensbrücke</strong> (für Wohnmobile), Dreikronenstraße 2, 97082 Würzburg, <a href="https://www.wvv.de/parken-b2c/parkplaetze/?city=W%C3%BCrzburg&center=2721" target="_blank" rel="noopener noreferrer">Hier klicken</a></li>
+    </ul>
+    <p>
+      Wir empfehlen, rechtzeitig anzureisen, damit genug Zeit für die Parkplatzsuche bleibt.
+    </p>
+  </div>
+
+  <div class="info-block">
+    <h2>💐 Nach der Trauung</h2>
+    <p>
+      Im Anschluss an die standesamtliche Trauung und den Sektempfang fahren wir gemeinsam
+      zur Villa Sommerach, wo um 12:15 Uhr die Begrüßung mit Fingerfood beginnt.
+    </p>
+  </div>
+
+  <section style="padding-bottom: 60px;">
+    <a href="villa-sommerach.html" class="btn">Villa Sommerach →</a>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <p class="names">Linda &amp; Timo</p>
+    <p>18. Juni 2026 · Mit Liebe &amp; Dankbarkeit</p>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('.site-nav').classList.toggle('scrolled', window.scrollY > 40);
+    });
+  </script>
+</body>
+</html>
