@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f5ef" />
+  <meta property="og:title" content="Fotos – Hochzeit Linda & Timo" />
+  <meta property="og:description" content="Fotos unserer Hochzeit am 18. Juni 2026." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <title>Fotos – Linda &amp; Timo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════ NAVIGATION ═══════════ -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-brand">Hochzeit Linda &amp; Timo</a>
+    <button class="nav-toggle" aria-label="Menü öffnen" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Startseite</a>
+      <a href="standesamt.html">Standesamt Würzburg</a>
+      <a href="villa-sommerach.html">Villa Sommerach</a>
+      <a href="fotos.html" class="active">Fotos</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <header class="subpage-hero">
+    <h1>Fotos</h1>
+    <div class="leaf-divider"><span>📸</span></div>
+    <p>Haltet die schönsten Momente unseres Tages fest</p>
+  </header>
+
+  <!-- ═══════════ CONTENT ═══════════ -->
+  <div class="info-block" style="text-align:center; padding:60px 24px 80px;">
+    <div style="font-size:3rem; margin-bottom:20px;">🚧</div>
+    <h2 style="margin-bottom:16px; text-align:center;">Hier entsteht bald etwas Schönes</h2>
+    <p style="max-width:480px; margin:0 auto; color:var(--text-soft); font-size:.95rem; line-height:1.7;">
+      Nach der Hochzeit findet ihr hier den Link zu unserer Foto-Cloud.
+      Dort könnt ihr eure eigenen Bilder hochladen und alle Fotos des Tages herunterladen.
+    </p>
+    <p style="margin-top:28px; color:var(--sage); font-size:.85rem; letter-spacing:1px;">
+      ✦ Wir freuen uns auf eure Schnappschüsse! ✦
+    </p>
+  </div>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <p class="names">Linda &amp; Timo</p>
+    <p>18. Juni 2026 · Unser Tag mit euch</p>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('.site-nav').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Fade-in on scroll
+    (function () {
+      document.querySelectorAll('section, .info-block').forEach(el => el.classList.add('fade-in'));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    })();
+
+    // Auto-close mobile nav
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+    });
+  </script>
+</body>
+</html>
