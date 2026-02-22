@@ -409,8 +409,24 @@ footer .names {
   border: none;
 }
 
+/* ── Fade-in on scroll ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease-out, transform .7s ease-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ── Responsive ── */
 @media (max-width: 480px) {
   .subpage-hero { padding: 120px 20px 40px; }
   .info-block { padding: 40px 20px; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; transition: none; }
 }

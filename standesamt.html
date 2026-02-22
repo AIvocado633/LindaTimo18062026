@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#f7f5ef" />
+  <meta property="og:title" content="Standesamt Würzburg – Hochzeit Linda & Timo" />
+  <meta property="og:description" content="Standesamtliche Trauung am 18. Juni 2026 in Würzburg." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
   <title>Standesamt Würzburg – Linda &amp; Timo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -116,6 +120,20 @@
   <script>
     window.addEventListener('scroll', () => {
       document.querySelector('.site-nav').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Fade-in on scroll
+    (function () {
+      document.querySelectorAll('section, .info-block, .detail-card, .parking-card').forEach(el => el.classList.add('fade-in'));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    })();
+
+    // Auto-close mobile nav
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
     });
   </script>
 </body>

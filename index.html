@@ -5,6 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f7f5ef" />
+    <meta property="og:title" content="Hochzeit Linda & Timo – 18. Juni 2026" />
+    <meta property="og:description" content="Wir heiraten! Feiert mit uns in Würzburg und Sommerach." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
     <title>Ihr seid eingeladen – Hochzeitsfeier</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -406,11 +410,13 @@
                 <div class="icon">💒</div>
                 <h3>Standesamt Würzburg</h3>
                 <p>9:45 Uhr Einfinden<br />10:00 Uhr Trauung<br />mit Sektempfang</p>
+                <a href="standesamt.html" class="btn" style="margin-top:18px; padding:10px 28px; font-size:.75rem;">Mehr erfahren</a>
             </div>
             <div class="detail-card">
                 <div class="icon">🥂</div>
                 <h3>Villa Sommerach</h3>
                 <p>12:15 Uhr Begrüßung &amp; Fingerfood<br />14:30 Uhr Kaffee &amp; Kuchen<br />17:30 Uhr Abendessen &amp; Party</p>
+                <a href="villa-sommerach.html" class="btn" style="margin-top:18px; padding:10px 28px; font-size:.75rem;">Mehr erfahren</a>
             </div>
         </div>
     </section>
@@ -432,6 +438,7 @@
             <div class="unit"><span class="number" id="c-mins">--</span><span class="label">Minuten</span></div>
             <div class="unit"><span class="number" id="c-secs">--</span><span class="label">Sekunden</span></div>
         </div>
+        <a id="cal-btn" class="btn" style="margin-top:32px; padding:12px 32px; font-size:.78rem; cursor:pointer;">📅 Im Kalender speichern</a>
     </section>
 
     <!-- ═══════════ INFOS ═══════════ -->
@@ -591,6 +598,46 @@
 
             map.fitBounds(L.featureGroup([m1, m2]).getBounds(), { padding: [40, 40] });
         })();
+
+        // Fade-in on scroll
+        (function () {
+            document.querySelectorAll('section, .info-block, .detail-card, .hotel-card, .trauzeugen-card, .parking-card').forEach(el => el.classList.add('fade-in'));
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+            }, { threshold: 0.12 });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        })();
+
+        // Auto-close mobile nav after tapping a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('open');
+            });
+        });
+
+        // Add to Calendar (.ics download)
+        document.getElementById('cal-btn').addEventListener('click', function () {
+            const ics = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//LindaTimo//Hochzeit//DE',
+                'BEGIN:VEVENT',
+                'DTSTART:20260618T080000Z',
+                'DTEND:20260618T230000Z',
+                'SUMMARY:Hochzeit Linda & Timo',
+                'DESCRIPTION:Standesamt Würzburg 10:00 Uhr\nVilla Sommerach ab 12:15 Uhr',
+                'LOCATION:Standesamt Würzburg / Villa Sommerach',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
+            const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'hochzeit-linda-timo.ics';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
     </script>
 </body>
 
