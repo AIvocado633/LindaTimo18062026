@@ -386,20 +386,12 @@ footer .names {
 }
 .parking-card .parking-link {
   margin-top: 8px;
-  font-size: .8rem;
   font-weight: 500;
-  letter-spacing: 1px;
-  color: var(--cream);
-  background: linear-gradient(135deg, var(--fern), var(--forest));
-  padding: 7px 18px;
-  border-radius: 20px;
+  color: var(--forest);
   text-decoration: none;
-  transition: transform .2s, box-shadow .2s;
-  box-shadow: 0 2px 8px rgba(46,66,40,.12);
 }
 .parking-card .parking-link:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(46,66,40,.18);
+  text-decoration: underline;
 }
 
 /* ── Map placeholder ── */
