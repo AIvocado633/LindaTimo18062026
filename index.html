@@ -375,13 +375,13 @@
     <!-- ═══════════ HERO ═══════════ -->
     <header class="hero">
         <p class="hero-subtitle">Gemeinsam feiern wir Liebe, Freundschaft und das Leben</p>
-        <h1>
+        <h1  style="margin-top:24px;">
             Linda
             <span class="amp">&amp;</span>
             Timo
         </h1>
         <div class="leaf-divider"><span>🌿</span></div>
-        <p class="hero-date">Donnerstag, 18. Juni · 2026</p>
+        <p class="hero-date">Donnerstag, 18. Juni 2026</p>
         <a href="#story" class="scroll-hint" aria-label="Nach unten scrollen">&#8964;</a>
     </header>
 
@@ -443,16 +443,21 @@
         </p>
         <div class="hotel-grid">
             <div class="hotel-card">
-                <h3>🏨 Gasthof zum weißen Lamm</h3>
+                <h3>🏨 Gasthof zum Weißen Lamm</h3>
                 <p>Reservierbar bis 31.03.2026</p>
                 <p>Unter „Abrufkontingent Linda Dickert“</p>
                 <p class="hotel-phone">📞 <a href="tel:093819377">09381 9377</a></p>
+                <p class="hotel-phone"><a href="https://strobel-lamm.de/" target="_blank"
+                        rel="noopener noreferrer">🔗 Zur Website</a></p>
             </div>
             <div class="hotel-card">
                 <h3>🏨 Hotel Weinblatt</h3>
                 <p>Nicht vorreserviert, seid schnell!</p>
                 <p class="hotel-phone">📞 <a href="tel:01757341186">0175 7341186</a><br />oder <a
                         href="tel:093812327">09381 2327</a></p>
+                <p class="hotel-phone"><a href="https://weinblatt-sommerach.de/" target="_blank"
+                        rel="noopener noreferrer">🔗 Zur Website</a></p>
+                    
             </div>
         </div>
         <p style="margin-top:24px;">
@@ -510,7 +515,7 @@
     <!-- ═══════════ FOOTER ═══════════ -->
     <footer>
         <p class="names">Linda &amp; Timo</p>
-        <p>18. Juni 2026 · Mit Liebe &amp; Dankbarkeit</p>
+        <p>18. Juni 2026 · Unser Tag mit euch</p>
     </footer>
 
     <!-- ═══════════ SCRIPTS ═══════════ -->
@@ -561,7 +566,7 @@
 
         // Interactive map with markers
         (function () {
-            const map = L.map('map', { scrollWheelZoom: false }).setView([49.811, 10.065], 11);
+            const map = L.map('map', { scrollWheelZoom: false });
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -576,13 +581,15 @@
                 popupAnchor: [0, -16]
             });
 
-            L.marker([49.7944, 9.9342], { icon: goldIcon })
+            const m1 = L.marker([49.7944, 9.9342], { icon: goldIcon })
                 .addTo(map)
-                .bindPopup('<strong>💒 Standesamt Würzburg</strong><br>10:00 Uhr Trauung');
+                .bindPopup('<strong>💒 Standesamt Würzburg</strong><br>Beim Grafeneckart 1<br>97070 Würzburg');
 
-            L.marker([49.8312, 10.2028], { icon: goldIcon })
+            const m2 = L.marker([49.8312, 10.2028], { icon: goldIcon })
                 .addTo(map)
                 .bindPopup('<strong>🎉 Villa Sommerach</strong><br>Nordheimer Str. 13<br>97334 Sommerach');
+
+            map.fitBounds(L.featureGroup([m1, m2]).getBounds(), { padding: [40, 40] });
         })();
     </script>
 </body>
