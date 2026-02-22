@@ -12,6 +12,8 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
         /* ── Page-specific: Hero ── */
         .hero {
@@ -30,6 +32,7 @@
                 radial-gradient(ellipse at 50% 50%, rgba(201, 168, 76, .05) 0%, transparent 60%),
                 linear-gradient(180deg, var(--cream) 0%, rgba(200, 213, 185, .15) 100%);
             padding: 40px 20px;
+            padding-top: calc(var(--nav-height, 60px) + 200px);
         }
 
         .hero::before,
@@ -401,20 +404,22 @@
         <div class="details-grid">
             <div class="detail-card">
                 <div class="icon">💒</div>
-                <h3>Standesamt</h3>
+                <h3>Standesamt Würzburg</h3>
                 <p>9:45 Uhr Einfinden<br />10:00 Uhr Trauung<br />mit Sektempfang</p>
             </div>
             <div class="detail-card">
                 <div class="icon">🥂</div>
                 <h3>Villa Sommerach</h3>
-                <p>12:15 Uhr Begrüßung &amp; Fingerfood<br />14:30 Uhr Kaffee &amp; Kuchen</p>
-            </div>
-            <div class="detail-card">
-                <div class="icon">🍽️</div>
-                <h3>Abendessen &amp; Party</h3>
-                <p>Villa Sommerach<br />17:30 Uhr</p>
+                <p>12:15 Uhr Begrüßung &amp; Fingerfood<br />14:30 Uhr Kaffee &amp; Kuchen<br />17:30 Uhr Abendessen &amp; Party</p>
             </div>
         </div>
+    </section>
+
+    <!-- ═══════════ MAP ═══════════ -->
+    <section>
+        <h2>Unsere Locations</h2>
+        <div class="leaf-divider"><span>🌿</span></div>
+        <div id="map" style="width:100%; height:380px; border-radius:14px; border:1px solid rgba(163,177,138,.3); box-shadow:0 4px 24px rgba(46,66,40,.05); margin-top:28px;"></div>
     </section>
 
     <!-- ═══════════ COUNTDOWN ═══════════ -->
@@ -431,7 +436,7 @@
 
     <!-- ═══════════ INFOS ═══════════ -->
     <section class="story">
-        <h2>Übernachtungsmöglichkeiten</h2>
+        <h2>Übernachten</h2>
         <div class="leaf-divider"><span>🌿</span></div>
         <p>
             Es sind für euch Zimmer in umliegenden Hotels abrufbar:
@@ -451,7 +456,7 @@
             </div>
         </div>
         <p style="margin-top:24px;">
-            Weitere Zimmer und Ferienwohnungen findet ihr sowohl in direkt in Sommerach als auch in Volkach (7min mit Taxi).
+            Weitere Zimmer und Ferienwohnungen findet ihr sowohl direkt in Sommerach als auch in Volkach (7min mit Taxi).
         </p>
         <p style="margin-top:24px;">
             Für Anreisende mit Wohnmobil oder Camper gibt es in der Nähe der Villa Sommerach den Campingplatz Katzenkopf (10 Gehminuten):
@@ -552,6 +557,32 @@
             }
             setNavHeight();
             window.addEventListener('resize', setNavHeight);
+        })();
+
+        // Interactive map with markers
+        (function () {
+            const map = L.map('map', { scrollWheelZoom: false }).setView([49.811, 10.065], 11);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                maxZoom: 18
+            }).addTo(map);
+
+            const goldIcon = L.divIcon({
+                className: 'map-marker',
+                html: '<div style="background:#c9a84c; width:28px; height:28px; border-radius:50%; border:3px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.25);"></div>',
+                iconSize: [28, 28],
+                iconAnchor: [14, 14],
+                popupAnchor: [0, -16]
+            });
+
+            L.marker([49.7944, 9.9342], { icon: goldIcon })
+                .addTo(map)
+                .bindPopup('<strong>💒 Standesamt Würzburg</strong><br>10:00 Uhr Trauung');
+
+            L.marker([49.8312, 10.2028], { icon: goldIcon })
+                .addTo(map)
+                .bindPopup('<strong>🎉 Villa Sommerach</strong><br>Nordheimer Str. 13<br>97334 Sommerach');
         })();
     </script>
 </body>
